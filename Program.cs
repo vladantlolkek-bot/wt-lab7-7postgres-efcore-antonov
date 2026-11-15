@@ -4,10 +4,10 @@ using wt_lab7_7postgres_efcore_antonov.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// 1. Получаем строку подключения из appsettings.json
+// 1. Берем строку подключения для локальной разработки (из appsettings.Development.json)
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
-// 2. Логика для Render: если есть переменная DATABASE_URL, используем её
+// 2. Проверяем, есть ли переменная окружения DATABASE_URL (для Render)
 var databaseUrl = Environment.GetEnvironmentVariable("DATABASE_URL");
 if (!string.IsNullOrWhiteSpace(databaseUrl))
 {
